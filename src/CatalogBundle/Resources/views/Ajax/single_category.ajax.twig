@@ -1,6 +1,6 @@
 <div class="single_category clearfix">
-    <div class="panel">
-        {% for product in category.products %}
+    {% for product in category.products %}
+        <div class="panel">
             <div class="category">
                 <a href="#product/{{ product.id }}">
                     {% if product.image is defined %}
@@ -15,11 +15,11 @@
                     {#<div>Приблизительная цена: {{ product.price }}$</div>#}
                 </a>
             </div>
-        {% else %}
-            <div class="description">
-                <h2>{{ category.name }}</h2>
-                {{ category.description|raw }}
-            </div>
-        {% endfor %}
-    </div>
+        </div>
+    {% else %}
+        <div class="description">
+            <h2>{{ category.name }}</h2>
+            {{ category.description|raw }}
+        </div>
+    {% endfor %}
 </div>

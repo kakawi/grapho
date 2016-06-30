@@ -6,7 +6,7 @@ requirejs.config({
         marionette: "vendor/backbone.marionette",
         underscore: "vendor/underscore",
         text: "vendor/text",
-        tpl: "vendor/underscore-tpl",
+        tpl: "vendor/underscore-tpl"
     },
 
     shim: {
@@ -21,14 +21,8 @@ requirejs.config({
             deps: ["backbone"],
             exports: "Marionette"
         },
-        tpl: ["text"],
+        tpl: ["text"]
     }
-});
-
-require(["marionette"], function(bbm) {
-    console.log("jQuery version: ", $.fn.jquery);
-    console.log("underscore identity call: ", _.identity(5));
-    console.log("Marionette: ", bbm);
 });
 
 require(["app"], function(Grapho) {
