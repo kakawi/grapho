@@ -1,0 +1,29 @@
+{% extends 'CatalogBundle::layout.html.twig' %}
+{% block content %}
+    <div class="single_category clearfix">
+        <div class="panel">
+        {% for product in category.products %}
+            <div class="category">
+                <a href="{{ path('single_product', {'id':product.id}) }}">
+                    {% if product.image is defined %}
+                        <div class="image">
+                            {% thumbnail product.image, 'big' %}
+                        </div>
+                        {#{% media product.image, 'small' %}#}
+                        {#{% path product.image, 'reference' %}#}
+                    {% endif %}
+                    <span>{{ product.name }}</span>
+
+                    {#<div>Приблизительная цена: {{ product.price }}$</div>#}
+                </a>
+            </div>
+
+        {% else %}
+            <div class="description">
+                <h2>{{ category.name }}</h2>
+                {{ category.description|raw }}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

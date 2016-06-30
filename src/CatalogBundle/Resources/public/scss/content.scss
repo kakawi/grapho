@@ -1,0 +1,122 @@
+.hlebon-content {
+  margin-left: $width__sidebar_desktop;
+  //min-height: $height__main_desktop;
+  font-family: $contentFont;
+  background: get-colour(content__background);
+
+  @include respond-to(desktop) {
+    min-height: $height__main_desktop;
+  }
+  @include respond-to(mobile) {
+    min-height: $height__main_mobile;
+    margin-top: $height__nav_mobile;
+  }
+
+  @include respond-to(desktop) {
+    padding: 2% 10px 10px 1%;
+
+    box-shadow: -1px 3px 25px black;
+  }
+
+  @include respond-to(mobile) {
+    margin-left: $width__sidebar_mobile;
+    padding: 5px;
+    //margin-bottom: $height__footer;
+  }
+
+  iframe {
+    max-width: 100%;
+  }
+
+  h2 {
+    font-family: $font-family__h;
+    font-size: $font-size__h2;
+    margin-bottom: 0.3rem;
+  }
+
+  h3 {
+    font-family: $font-family__h;
+    font-size: $font-size__h3;
+    margin-bottom: 0.2rem;
+  }
+  
+  strong {
+    font-weight: bold;
+  }
+
+  p {
+    font-family: $font-family__p;
+    line-height: 1.3rem;
+    margin-bottom: 0.3rem;
+    text-indent: 2.0rem;
+  }
+
+
+}
+
+@include respond-to(mobile) {
+  .panel {
+    display: none;
+  }
+}
+
+.panel {
+  $columns: 12 ;
+  $percentage: 0.03;
+  $gutters: $percentage * $columns / (1 - $percentage * $columns);
+  $map: (
+          container: auto,
+          columns: $columns,
+          gutters: $gutters,
+          gutter-position: split,
+          math: fluid,
+          output: isolate,
+          debug: (
+                  image: show,
+                  color: rgba(#66f, .25),
+                  output: overlay,
+                  toggle: top right,
+          ),
+          //column-width: 1em,
+  );
+
+  @include with-layout($map) {
+    //@include container;
+
+    .single-panel {
+      //@include span(4 of 12 1 fluid after);
+      @include span($columns / 3);
+      margin-bottom: 2 * gutter($columns);
+      height: 200px;
+      position: relative;
+
+      background: #F5F5F5;
+
+      a {
+        display: block;
+      }
+
+      .image {
+        width: 100%;
+        position: absolute;
+      }
+
+      img {
+        margin: 5% auto;
+        display: block;
+
+        height: 140px;
+        width: 140px;
+      }
+
+      span {
+        text-decoration: none;
+        position: absolute;
+        color: black;
+        bottom: 7%;
+        left: 7%;
+        font-family: $rosbankLight;
+      }
+    }
+  }
+}

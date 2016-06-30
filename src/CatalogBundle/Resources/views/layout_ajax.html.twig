@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+{% set dir = 'catalog' %}
+
+{% block stylesheets %}
+    <link href='{{ asset("/bundles/#{dir}/css/font-awesome.min.css") }}' rel="stylesheet" />
+    {#<link href='{{ asset("/bundles/#{dir}/css/all.css") }}' rel="stylesheet" />#}
+    <link href='{{ asset("/bundles/#{dir}/css/all.min.css") }}' rel="stylesheet" />
+{% endblock %}
+
+{% block title %}Grapho :: {{ title }}{% endblock %}
+
+{% block body %}
+    {% block templates %}{% endblock %}
+
+    <div class="wrapper">
+        {% block header %}
+            {{ include('CatalogBundle:Ajax:header.ajax.twig') }}
+        {% endblock %}
+
+        {% block nav %}
+            <div id="nav-region"></div>
+        {% endblock %}
+
+        <div class="main">
+            <div id="sidebar-region"></div>
+            <div id="content-region"></div>
+        </div>
+
+        <footer>
+            <div class="wrapper-boarder wrapper-header">
+                +395 XX XXX-XX-XX
+            </div>
+        </footer>
+    </div>
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

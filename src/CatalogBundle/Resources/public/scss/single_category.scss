@@ -1,0 +1,64 @@
+.single_category {
+  .description {
+    img {
+      float: right;
+      height: 200px;
+      margin-left: 5px;
+    }
+  }
+
+  .panel {
+    $columns: 12 ;
+    $percentage: 0.03;
+    $gutters: $percentage * $columns / (1 - $percentage * $columns);
+    $map: (
+            container: auto,
+            columns: $columns,
+            gutters: $gutters,
+            gutter-position: split,
+            math: fluid,
+            output: isolate,
+      //column-width: 1em,
+    );
+
+    @include with-layout($map) {
+      //@include container;
+
+      .category {
+        //@include span(4 of 12 1 fluid after);
+        @include span($columns / 3);
+        margin-bottom: 2 * gutter($columns);
+        height: 200px;
+        position: relative;
+
+        background: #F5F5F5;
+
+        a {
+          display: block;
+        }
+
+        .image {
+          width: 100%;
+          position: absolute;
+        }
+
+        img {
+          margin: 5% auto;
+          display: block;
+
+          height: 140px;
+          width: 140px;
+        }
+
+        span {
+          text-decoration: none;
+          position: absolute;
+          color: black;
+          bottom: 7%;
+          left: 7%;
+          font-family: $rosbankLight;
+        }
+      }
+    }
+  }
+}

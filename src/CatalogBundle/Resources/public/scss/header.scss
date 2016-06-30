@@ -1,0 +1,176 @@
+$columns: 4 ;
+$percentage: 0.03;
+$gutters: $percentage * $columns / (1 - $percentage * $columns);
+$map: (
+        container: 968px,
+        columns: $columns,
+        gutters: $gutters,
+        //gutter-position: split,
+        gutter-position: inside,
+        math: fluid,
+        output: isolate,
+  //column-width: 1em,
+);
+@include with-layout($map) {
+  header {
+
+    //@include container;
+    z-index: $z-index__header;
+    position: relative;
+    color: #fff;
+    font-family: $rosbankRegular;
+    height: $height__header;
+    display: flex;
+    align-items: center;
+    font-size: $font-size__header;
+
+    .logo {
+      @include span(1);
+      a {
+        img {
+          margin-left: 15px;
+          width: 190px;
+        }
+      }
+    }
+
+    .contacts {
+      @include span(2);
+      @include push(1);
+      padding-right: 0;
+      line-height: 1.7rem;
+
+      .phones {
+        text-align: center;
+        position: relative;
+        @include span(2);
+
+        i {
+          font-size: 2rem;
+          position: absolute;
+          left: 20px;
+          top: 11px;
+        }
+      }
+
+      .address {
+        @include span(2);
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+nav {
+  font-family: $rosbankRegular;
+  font-size: 1.2rem;
+}
+
+@include respond-to(desktop) {
+  nav { // Прячем logo которое находится в nav
+    .logo {
+      display: none;
+    }
+  }
+
+
+  .menu-top__button {
+    display: none;
+  }
+
+  .menu-top {
+    height: $height__nav;
+
+    background: get_colour(header__background);
+    box-shadow: 0 1px 14px get_colour(header__box-shadow);
+
+    > ul {
+      @include layout(auto 12 0 inside fluid isolate);
+      @include no-list();
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      position: relative;
+
+      li {
+        @include span(3);
+        text-align: center;
+        height: 100%;
+        display: table; //чтобы выровнять <a> по вертикали
+        transition: background-color 0.3s ease, color 0.3s ease;
+
+        &:hover {
+          background:  get-colour(header__li_hover__background);
+        }
+
+        a {
+          text-decoration: none;
+          padding: 20px 20px;
+          display: table-cell; // чтобы выравнять по вертикали
+          vertical-align: middle; // само выравнивание
+          color: get-colour(header__color_desktop);
+        }
+      }
+    }
+  }
+}
+
+@include respond-to(mobile) {
+  header {
+    display: none;
+  }
+
+  nav { // Приклеиваем верхнее панель
+    height: $height__nav_mobile;
+    position: fixed;
+    top: 0;
+    @include background-image(linear-gradient(to right, get-colour(background-gradient__start-end) 0%, get-colour(background-gradient__center) 50%, get-colour(background-gradient__start-end) 100%));
+    width: 100%;
+    z-index: 100;
+
+    .logo {
+      display: block;
+      float: left;
+      img {
+        height: $height__nav_mobile;
+      }
+    }
+  }
+
+  .menu-top__button {
+    display: flex;
+    align-items: center;
+    float: right;
+    margin-right: 20px;
+    height: 100%;
+    font-weight: 700;
+    color: #fff;
+    vertical-align: middle;
+    text-decoration: none;
+  }
+
+  .menu-top {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    li {
+      background-color: #FFD699;
+      padding: 5px;
+
+      &:hover {
+        background-color: #FFEBCC;
+      }
+
+      a {
+        text-decoration: none;
+        color: #101010;
+        display: block;
+      }
+    }
+  }
+}

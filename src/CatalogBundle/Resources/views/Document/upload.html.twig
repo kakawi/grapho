@@ -1,0 +1,10 @@
+{% extends 'CatalogBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="single_page">
+        <h2>Файл с прайсом цен</h2>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

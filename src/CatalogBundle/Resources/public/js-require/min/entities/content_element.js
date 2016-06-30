@@ -1,0 +1,1 @@
+define(["app"],function(n){n.module("Entities",function(n,t,e,o,r,c){n.Content=e.Model.extend({urlRoot:"/ajax/content"});var u={getContent:function(t,e){var o=new n.Content({id:t});return new Promise(function(n){o.fetch({data:{source:e},success:function(t){n(t)}})})}};t.reqres.setHandler("content:get",function(n){var t=n.get("source"),e=n.get("id");return u.getContent(e,t)})})});

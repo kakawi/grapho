@@ -1,0 +1,6 @@
+{{ dump(list) }}
+{% if list %}
+    {{ include('CatalogBundle:Category:node_template.html.twig', {'list': list}) }}
+{% else %}
+    <div>Nothing</div>
+{% endif %}

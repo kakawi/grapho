@@ -1,0 +1,38 @@
+//@import "http://webfonts.ru/import/clearsans.css";
+//@import "http://webfonts.ru/import/lato.css";
+
+//@import "../fonts/roboto/roboto.css";
+//@import url(https://fonts.googleapis.com/css?family=Roboto+Slab&subset=latin,cyrillic);
+//$roboto-slab: 'Roboto Slab';
+//@import url(https://fonts.googleapis.com/css?family=Merriweather&subset=latin,cyrillic);
+//$merriweather: 'Merriweather', serif;
+//@import url(https://fonts.googleapis.com/css?family=Russo+One&subset=latin,cyrillic);
+//$russo-one: 'Russo One', sans-serif;
+//@import url(https://fonts.googleapis.com/css?family=PT+Serif&subset=latin,cyrillic);
+//$pt-serif: 'PT Serif', serif;
+
+
+@font-face {
+  font-family: 'Rosbank Light';
+  src: url('../fonts/rosbank/RBSTTLIG.TTF') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+$rosbankLight: 'Rosbank Light', sans-serif;
+
+@font-face {
+  font-family: 'Rosbank Regular';
+  src: url('../fonts/rosbank/RBSTTREG.TTF') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+$rosbankRegular: 'Rosbank Regular', sans-serif;
+
+$headerFont: $rosbankLight;
+$sidebarFont: $rosbankRegular;
+$contentFont: 'serif';
+
+$font-family__h: $rosbankRegular;
+$font-size__h2: 1.5rem;
+$font-size__h3: 1.2rem;
+$font-family__p: $rosbankLight;

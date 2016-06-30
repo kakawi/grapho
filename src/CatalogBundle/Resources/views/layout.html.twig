@@ -1,0 +1,70 @@
+{% extends '::base.html.twig' %}
+
+{% set dir = 'catalog' %}
+
+{% block stylesheets %}
+    <link href='{{ asset("/bundles/#{dir}/css/font-awesome.min.css") }}' rel="stylesheet" />
+    {#<link href='{{ asset("/bundles/#{dir}/css/all.css") }}' rel="stylesheet" />#}
+    <link href='{{ asset("/bundles/#{dir}/css/all.min.css") }}' rel="stylesheet" />
+
+{% endblock %}
+
+{% block title %}Grapho :: {{ title }}{% endblock %}
+
+{% block body %}
+
+    <div class="wrapper">
+        {% block header %}
+            {{ include('CatalogBundle:Main:header.html.twig') }}
+        {% endblock %}
+
+        {% block nav %}
+            {{ include('CatalogBundle:Main:nav.html.twig') }}
+        {% endblock %}
+
+        <div class="main">
+            {% block sidebar %}
+                <div class="left-swipe-area">
+                    <div class="ratio-inner">
+                        <a href="#" data-toggle=".container" id="sidebar-toggle">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </a>
+                    </div>
+                </div>
+                {{ include('CatalogBundle:Main:sidebar.html.twig') }}
+            {% endblock %}
+            <div class="hlebon-content">
+                {% block breadcrumbs %}
+                    {% if category is defined %}
+                        {#{{ render(controller('HlebBundle:Category:getBreadcrumbs', {'currentCategory':category})) }}#}
+                    {% endif %}
+                {% endblock %}
+
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+
+        <footer>
+            <div class="wrapper-boarder wrapper-header">
+                +395 XX XXX-XX-XX
+            </div>
+        </footer>
+    </div>
+{% endblock %}
+
+
+
+{% block javascripts %}
+    {#<script src='{{ asset("/bundles/#{dir}/js/jquery-1.11.3.min.js") }}'></script>#}
+{##}
+    {#<script src='{{ asset("/bundles/#{dir}/js/hlebon/menu-top.js") }}'></script>#}
+    {#<script src='{{ asset("/bundles/#{dir}/js/hlebon/sidebar.js") }}'></script>#}
+    {#<script src='{{ asset("/bundles/#{dir}/js/hlebon/observer-resize.js") }}'></script>#}
+{##}
+    {#<script src='{{ asset("/bundles/#{dir}/js/jquery.touchSwipe.min.js") }}'></script>#}
+
+    {# MIN #}
+    <script src='{{ asset("/bundles/#{dir}/js/min/all.js") }}'></script>
+{% endblock %}

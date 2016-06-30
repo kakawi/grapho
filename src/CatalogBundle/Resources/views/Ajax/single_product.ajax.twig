@@ -1,0 +1,12 @@
+<div class="single_product">
+    {% if product %}
+        {% if product.path != null %}
+            <img src="{{ asset('uploads/documents/' ~ product.path) }}" alt="">
+        {% endif %}
+        <h2>{{ product.name }}</h2>
+        {#<div>Price - {{ product.price }}</div>#}
+        <div>{{ product.description|raw }}</div>
+    {% else %}
+        <div>Нету товара с таким id</div>
+    {% endif %}
+</div>

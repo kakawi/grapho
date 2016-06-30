@@ -1,0 +1,18 @@
+services:
+    sonata.admin.post:
+        class: CatalogBundle\Admin\ProductAdmin
+        arguments: [~ , CatalogBundle\Entity\Product, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Product" }
+
+    sonata.admin.category:
+        class: CatalogBundle\Admin\CategoryAdmin
+        arguments: [~, CatalogBundle\Entity\Category, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Category" }
+
+    sonata.admin.page:
+        class: CatalogBundle\Admin\PageAdmin
+        arguments: [~, CatalogBundle\Entity\Page, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Page" }

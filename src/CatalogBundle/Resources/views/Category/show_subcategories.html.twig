@@ -1,0 +1,10 @@
+{% extends 'CatalogBundle::layout.html.twig' %}
+{% block content %}
+    {% for category in categories %}
+        <a href="{{ path('single_category', {'id': category.id}) }}"><h2>{{ category.name }}</h2></a>
+        <div class="clearfix">{{ category.description|raw }}</div>
+        <hr>
+    {% else %}
+        <div>Error! Alarm!</div>
+    {% endfor %}
+{% endblock %}

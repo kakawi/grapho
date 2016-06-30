@@ -1,0 +1,15 @@
+footer {
+  display: none;
+  z-index: $z-index__footer;
+  height: $height__footer;
+  background: #FFAD33;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  box-shadow: 0 -1px 14px #995C00;
+
+  div {
+    padding: 5px;
+    font-family: $headerFont;
+  }
+}

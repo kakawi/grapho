@@ -1,0 +1,19 @@
+<div class="panel clearfix">
+    {% for product in products %}
+        <div class="single-panel">
+            <a href="#product/{{ product.id }}">
+                {% if product.image is defined %}
+                    <div class="image">
+                        {% thumbnail product.image, 'big' %}
+                    </div>
+                    {#{% media product.image, 'small' %}#}
+                    {#{% path product.image, 'reference' %}#}
+                {% endif %}
+                <span>{{ product.name }}</span>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+<div>
+    {{ mainPage.pageText|raw }}
+</div>

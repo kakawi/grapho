@@ -1,0 +1,80 @@
+{% extends 'CatalogBundle::layout_ajax.html.twig' %}
+
+{% block javascripts %}
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/vendor/jquery.js") }}'></script>
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/vendor/underscore.js") }}'></script>
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/vendor/backbone.js") }}'></script>
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/vendor/backbone.marionette.js") }}'></script>
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/vendor/backbone-nested-models.min.js") }}'></script>
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/app.js") }}'></script>
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/apps/routing_app.js") }}'></script>
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/entities/sidebar_element.js") }}'></script>
+
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/entities/nav_element.js") }}'></script>
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/apps/nav/nav_view.js") }}'></script>
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/apps/nav/nav_controller.js") }}'></script>
+
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/apps/sidebar/sidebar_view.js") }}'></script>
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/apps/sidebar/sidebar_controller.js") }}'></script>
+
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/entities/content_element.js") }}'></script>
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/apps/content/content_view.js") }}'></script>
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/apps/content/content_controller.js") }}'></script>
+
+    <script src='{{ asset("/bundles/#{dir}/js-ajax/apps/observer/window_observer.js") }}'></script>
+
+    <script>
+        Grapho.start();
+    </script>
+{% endblock %}
+
+{% block templates %}
+    <script type="text/template" id="nav-template">
+            <div class="logo">
+                <a href="#homepage">
+                    <img src='{{ asset("bundles/#{dir}/img/logo.svg") }}' alt="">
+                </a>
+            </div>
+            <a href="#" class="menu-top__button">Menu</a>
+            <div class="menu-top">
+                <ul></ul>
+            </div>
+    </script>
+
+    <script type="text/template" id="nav-element-template">
+        <a href="<%= href %>"><%= title %></a>
+    </script>
+
+    <script type="text/template" id="sidebar-template">
+        <div class="left-swipe-area">
+            <div class="ratio-inner">
+                <a href="#" data-toggle=".container" id="sidebar-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>
+            </div>
+        </div>
+        <div class="left-sidebar">
+            <ul></ul>
+        </div>
+    </script>
+
+    <script type="text/template" id="sidebar-no-sub-menu-template">
+        <a href="<%= id %>"><%= name %></a>
+    </script>
+
+    <script type="text/template" id="sidebar-sub-menu-template">
+        <a href="<%= id %>" class="parent"><i class="fa fa-angle-right"></i><%= name %></a>
+        <ul></ul>
+    </script>
+
+    <script type="text/template" id="content-template">
+            <div><%= text %></div>
+    </script>
+{% endblock %}
+
+
+{% block content %}
+    {{ home_content }}
+{% endblock %}

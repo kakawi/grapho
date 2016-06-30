@@ -1,0 +1,1 @@
+define(["app","tpl!apps/content/templates/content_template.tpl"],function(t,e){t.module("ContentApp",function(t,n,p,o,l,a){t.Content=o.ItemView.extend({template:e,className:"hlebon-content"})})});

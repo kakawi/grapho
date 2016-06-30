@@ -1,0 +1,14 @@
+{#<div class="left-swipe-area">#}
+    {#<div class="ratio-inner">#}
+        {#<a href="#" data-toggle=".container" id="sidebar-toggle">#}
+            {#<span class="bar"></span>#}
+            {#<span class="bar"></span>#}
+            {#<span class="bar"></span>#}
+        {#</a>#}
+    {#</div>#}
+{#</div>#}
+<div class="left-sidebar">
+
+    {{ render(controller('CatalogBundle:Category:getSidebar')) }}
+    {#{{ knp_menu_render('CatalogBundle:Builder:getSidebar') }}#}
+</div>

@@ -1,0 +1,12 @@
+<ul>
+
+    {% for node in list %}
+        <li>
+            <a href="{{ path('single_category', {'id':node.id}) }}">{{ node.name }}</a>
+            {% if node.__children %}
+
+                {{ include('CatalogBundle:Category:node_template.html.twig', {'list': node.__children}) }}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

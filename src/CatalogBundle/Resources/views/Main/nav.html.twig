@@ -1,0 +1,10 @@
+<nav>
+    <div class="logo">
+        {#<!--            <a href="/"><img src="http://placehold.it/80x50" alt="Логотип"></a>-->#}
+        <a href="/"><img src='{{ asset("bundles/#{dir}/img/logo.svg") }}' alt="Логотип"></a>
+    </div>
+    <a href="#" class="menu-top__button">Menu</a>
+    <div class="menu-top">
+        {{ knp_menu_render('CatalogBundle:Builder:getTopMenu') }}
+    </div>
+</nav>

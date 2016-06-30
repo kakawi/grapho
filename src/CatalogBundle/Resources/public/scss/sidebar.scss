@@ -1,0 +1,247 @@
+.left-sidebar > ul ul > li { /* 2 level */
+  background: #f2ffe8;
+}
+
+.left-sidebar {
+  i {
+    float: right;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  ul {
+    /* сбрасываем поля и отступы у списков */
+    @include no-list();
+    //z-index: 3;
+
+    white-space: nowrap; /* Для того чтобы элементы были написаны в 1 строку */
+
+    font-family: $sidebarFont;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+@include respond-to(desktop) {
+
+  .left-sidebar {
+    position: absolute;
+    z-index: $z-index__left-sidebar;
+    top: 0;
+    bottom: 0;
+    width: $width__sidebar_desktop;
+    padding: 2% 1% 0 1%;
+    background: get-colour(sidebar__background_desktop);
+
+    a {
+      color: #101010;
+      display: block;
+    }
+
+    $padding__a_top: 8px;
+    $padding__a_bottom: 5px;
+    > ul > li {
+      /* 1 уровень */
+      border-bottom: 1px solid #995C00;
+      transition: background-color 0.3s ease, color 0.3s ease;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background: #FFD699;
+      }
+
+      a {
+        padding: $padding__a_top 0 $padding__a_bottom 5px;
+      }
+    }
+
+    > ul ul {
+      /* Начиная с 2-го уровня размещать списки справа от родительского li */
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      min-width: 100%;
+
+      li {
+        border-bottom: 1px solid #995C00;
+        transition: background-color 0.3s ease, color 0.3s ease;
+
+        a {
+          padding: $padding__a_top 5px $padding__a_bottom 5px;
+        }
+
+        &:hover {
+          background: #FFD699;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+
+    ul li {
+      position: relative; /* Для того чтобы top:0 для меню >=2 уровня выравнивал по li, а не по ul */
+    }
+  }
+}
+
+$sidebar-TimeTransition: 0.5s;
+$n: 10;
+$delay: 0.07;
+$height__header: 10%;
+
+@include respond-to(mobile) {
+  .left-swipe-area {
+    position: fixed;
+    width: $width__left-swipe-area;
+    //height: 100%;
+    height: 93vh;
+
+    background: get-colour(swipe-area__background);
+
+    .ratio-inner {
+      //top: $height__header;
+      position: relative;
+      height: 0;
+      border: none;
+      padding-top: 50%;
+      background: get-colour(sidebar-toggle_background);
+      margin: 5px auto 0 auto;
+      width: 60%;
+      border-radius: 3px;
+    }
+
+    #sidebar-toggle {
+      //display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      //padding: 5px;
+      //width: 50%;
+      //margin: 0 auto;
+      //height: 22px;
+      //height: 4%;
+      //padding-top: 4px;
+
+      .bar {
+        display: block;
+        width: 80%;
+        margin: 0 auto 20% auto;
+        height: 8%;
+        background-color: #fff;
+        border-radius: 2px;
+
+        &:first-child{
+          margin-top: 12%;
+        }
+
+      }
+    }
+  }
+
+  .left-sidebar {
+    //position: fixed; // Получается косяк, если разворачиваем много пунктов (невозможно пролистать список)
+    // т.е. если fixed, то не учитывается его размер совсем (может выходить за экран и браузеру по барабану
+    //position: absolute;
+
+    position: fixed; // Возвращаем fixed, т.к. при пролистывании страницы вниз меню остается на верху, пытаемся решить проблему по другому (через overflow-y: scroll) и height:
+    height: 100%;
+
+    /* Смещаем на ширину swipe-area
+    Теперь анимация начинается ровно от правого края swipe-area
+    (благодаря left: -(100% - $width__left-swipe-area))
+    */
+    left: $width__left-swipe-area;
+    /* Меню должно быть под swipe-area*/
+    z-index: $z-index__left-sidebar;
+    /* Отступ от кнопки в swipe-area */
+    //margin-top: 10%;
+    //padding-bottom: $height__footer;
+    /**
+    Если делать через
+    display: none -> display: block, то не отрабатывает CSS-анимация
+    А проблема в том, что на месте, где должно находится left-sidebar
+    нельзя нажать (выделить), т.е. нужно так спрятать элемент, чтобы он
+    не только был визуально невидим (left, margin-left), но и не кликабелен (visibility:hidden)
+    */
+    visibility: hidden;
+
+    /* На маленьких экранах, если откроется подпункт с длинным названием, то порушится вся верстка */
+    //overflow: hidden;
+
+
+    /* Хочу, чтобы меню открывалось на всю ширину экрана мобильника
+    но отсчет ведется от всего экрана, т.к. position: absolute, а не fixed*/
+    width: 100% - $width__left-swipe-area;
+
+
+    /* этот класс обязательно завязан на setTimeout, чтобы сначала отработала
+    анимация, а потом исчезло меню */
+    &.active {
+      visibility: visible;
+    }
+
+
+    > ul {
+      //top: $height__header;
+      top: 0;
+
+      //height: 100% - $height__header;
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: absolute;
+      bottom: $height__footer;
+      width: 100%;
+    }
+
+    > ul > li {
+      /* 1 уровень */
+      position: relative;
+      // и Прячем
+      left: -100%;
+
+      transition: left $sidebar-TimeTransition ease-out;
+
+      background: get-colour(sidebar-li__first-level__mobile__background);
+
+      &.is-expanded {
+        left: 0;
+      }
+
+      @for $i from 1 through $n {
+        $in: $delay * ($i - 1);
+        $out: $delay * ($n - $i);
+
+        &:nth-child(#{$i}) {
+          transition-delay: #{$out}s;
+        }
+
+        &.is-expanded:nth-child(#{$i}) {
+          transition-delay: #{$in}s;
+        }
+
+      }
+    }
+
+    > ul ul {
+      /* Начиная с 2-го уровня размещать списки справа от родительского li */
+      display: none;
+      position: static;
+    }
+
+    a {
+      display: block;
+      color: black;
+      padding: 5px;
+    }
+  }
+}

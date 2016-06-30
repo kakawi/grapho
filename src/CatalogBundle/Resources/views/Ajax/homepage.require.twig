@@ -1,0 +1,10 @@
+{% extends 'CatalogBundle::layout_ajax.html.twig' %}
+
+{% block javascripts %}
+    {# RequireJS #}
+    <script data-main='{{ "/bundles/#{dir}/js-require/require_main.js" }}' src='{{ asset("/bundles/#{dir}/js-require/vendor/require.js") }}'></script>
+{% endblock %}
+
+{% block content %}
+    {{ home_content }}
+{% endblock %}

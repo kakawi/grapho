@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^test.grapho.by$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.test.grapho.by$
+RewriteCond %{REQUEST_URI} !web/
+RewriteRule (.*) /web/$1 [L]

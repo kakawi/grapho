@@ -1,0 +1,91 @@
+
+$susy: (
+        columns: 12,
+        gutters: .25,
+        container: 968px,
+        //debug: (
+        //        image: show,
+        //        color: rgba(#66f, .25),
+        //        output: overlay,
+        //        toggle: top right,
+        //),
+);
+
+@mixin no-list(){
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+// SIZE //
+$small: 1000px;
+$width__left-swipe-area: 15%;
+$height__header: 10vh;
+$height__nav: 5vh;
+$height__nav_mobile: 7vh;
+$height__main_desktop: 100vh - ($height__header + $height__nav);
+$height__main_mobile: 100vh - $height__nav_mobile;
+
+$height__footer: 50px;
+$extra-width-li: 40%;
+
+$width__sidebar_desktop: 25%;
+$width__sidebar_mobile: $width__left-swipe-area;
+$width__hlebon-content_desktop: 100% - $width__sidebar_desktop;
+
+$font-size__header: 1.17rem;
+
+// Z-INDEX //
+$z-index__header: 4;
+$z-index__left-sidebar: 11;
+$z-index_left-swipe-area: 2;
+$z-index__footer: 3;
+$z-index__hleb-content: 10;
+
+//HACK
+$z-index__body: -10;
+$z-index__hlebon-content-wrapper-boarder: -1;
+//END HACK
+
+$colours:
+(
+  background-gradient__start-end: #262D36,
+  background-gradient__center: #3C5B80,
+
+  header__background: #3D526D,
+  header__li_hover__background: #49688B,
+  header__color_desktop: #fff,
+  header__box-shadow: #3D526D,
+
+  swipe-area__background: #FFF9F0,
+  sidebar-toggle_background: #FF9800,
+  sidebar-li__first-level__mobile__background: #FFD699,
+  //sidebar__background_desktop: rgba(255, 235, 204, 0.67),
+  sidebar__background_desktop: #FBFBFB,
+
+  content__background: #FBFBFB,
+);
+
+@function get-colour($colour) {
+
+  @if map-has-key($colours, $colour) {
+    $colour: map-get($colours, $colour);
+  } @else {
+    @if type-of($colour) != colour {
+      @error "Colour name: `#{$colour}` not found.";
+    }
+  }
+
+  @return $colour;
+}
+
+@mixin respond-to($media) {
+  @if $media == mobile {
+    @media only screen and (max-width: $small) { @content; }
+  }
+    //@else if $media == medium-screens {
+    //  @media only screen and (min-width: $small + 1) and (max-width: $large - 1) { @content; }
+    //}
+  @else if $media == desktop {
+    @media only screen and (min-width: $small + 1) { @content; }
+  }
+}

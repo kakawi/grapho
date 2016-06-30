@@ -1,0 +1,7 @@
+<div class="hlebon-breadcrumb">
+    <ul>
+        {% for part in breadcrumbs %}
+            <li><a href="{{ path('get_category', {'id': part.id}) }}">{{part.name}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
