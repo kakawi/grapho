@@ -1,6 +1,37 @@
 RewriteEngine on
 RewriteBase /
 
+<ifModule mod_headers.c>
+#  <FilesMatch "\.(gif|ico)$">
+#      Header set Cache-Control "max-age=2592000, public"
+#  </FilesMatch>
+
+#  <FilesMatch "\.(css|js|svg|ttf|TTF|tpl)$">
+#      Header set Cache-Control "max-age=100, public"
+#  </FilesMatch>
+
+#  <FilesMatch "\.(php)$">
+#      Header set Cache-Control "private, no-store, no-cache, must-revalidate, no-transform, max-age=0"
+#      Header set Pragma "no-cache"
+#  </FilesMatch>
+</ifModule>
+
+<IfModule mod_expires.c>
+  <FilesMatch \.(gif|png|jpg|jpeg|TTF|svg)$>
+    ExpiresDefault "access plus 7 day"
+  </FilesMatch>
+  ExpiresActive on
+  ExpiresByType image/jpeg "access plus 7 day"
+  ExpiresByType image/gif "access plus 7 day"
+  ExpiresByType image/png "access plus 7 day"
+  ExpiresByType text/css "access plus 7 day"
+  <FilesMatch \.(css|js)$>
+    ExpiresDefault "access plus 7 day"
+  </FilesMatch>
+  ExpiresByType text/css "access plus 7 day"
+  ExpiresByType application/javascript "access plus 7 day"
+</IfModule>
+
 # If the requested filename exists, simply serve it.
 # We only want to let Apache serve files and not directories.
 RewriteCond %{DOCUMENT_ROOT}/web/%{REQUEST_URI} -f
