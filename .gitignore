@@ -82,6 +82,11 @@ crashlytics-build.properties
 
 /web/bundles/
 /app/bootstrap.php.cache
+/syncDataBases
+/.realsync
+/sync
+/.realsync_test
+/syncDataBases_production
 /app/cache/*
 /app/config/parameters.yml
 /app/logs/*

@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/old", name="homepage")
      */
     public function homepageAction()
     {

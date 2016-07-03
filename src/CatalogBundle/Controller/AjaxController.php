@@ -22,7 +22,7 @@ class AjaxController extends Controller {
     }
 
     /**
-     * @Route("/require/", name="ajax_require_homepage")
+     * @Route("/", name="ajax_require_homepage")
      */
     public function homepageRequireJSAction()
     {
