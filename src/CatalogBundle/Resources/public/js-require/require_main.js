@@ -1,5 +1,5 @@
 requirejs.config({
-    baseUrl: "/bundles/catalog/js-require/min",
+    baseUrl: "/bundles/catalog/js-require/min/",
     paths: {
         jquery: "vendor/jquery",
         backbone: "vendor/backbone",
