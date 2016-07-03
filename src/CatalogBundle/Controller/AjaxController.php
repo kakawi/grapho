@@ -144,6 +144,7 @@ class AjaxController extends Controller {
             'mainPage' => $mainPageDescription,
         ]);
         $content['source'] = 'homepage';
+        $content['name'] = 'Главная';
 
         return $content;
     }

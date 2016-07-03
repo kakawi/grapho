@@ -37,7 +37,6 @@ define(["app",
 
             setDesktopFunctions: function() {
                 this.clearMenu();
-                console.log('Nav - DesktopFunctions');
             },
 
             toggleMenu: function() {
@@ -55,7 +54,6 @@ define(["app",
             },
 
             setMobileFunctions: function() {
-                console.log('Nav - MobileFunctions');
             }
         })
     });

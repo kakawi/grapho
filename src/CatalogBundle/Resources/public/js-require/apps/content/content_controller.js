@@ -7,6 +7,8 @@ define(["app", "apps/content/content_view", "entities/content_element"], functio
                     var contentView = new ContentApp.Content({
                         model: data
                     });
+                    Grapho.request("title:change", data.get('name'));
+
                     Grapho.navigate(data.get("source") + (data.get("id") ? "/" + data.get("id") : ""));
 
                     Grapho.contentRegion.show(contentView);
@@ -40,6 +42,10 @@ define(["app", "apps/content/content_view", "entities/content_element"], functio
                 });
                 this.showContent(model);
             }
-        }
+        };
+
+        Grapho.reqres.setHandler("title:change", function(title) {
+            document.title = "Grapho :: " + title;
+        })
     });
 });

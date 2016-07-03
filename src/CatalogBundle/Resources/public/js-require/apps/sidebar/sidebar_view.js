@@ -39,7 +39,7 @@ define(["app",
             },
 
             setDesktopFunctions: function() {
-                console.log('Desktop');
+                //console.log('Desktop');
                 this.clearMobileFunctions();
 
                 // Выбор категории в Desktop режиме
@@ -72,14 +72,14 @@ define(["app",
             },
 
             clearDesktopFunctions: function() {
-                console.log('Clear Desktop');
+                //console.log('Clear Desktop');
 
                 this.$el.find('a.parent').off(); // Убираем обработку клина по category для Mobile
                 this.$el.off(); // Убираем обработку hover для Mobile
             },
 
             setMobileFunctions: function() {
-                console.log('setMobileFunctions');
+                //console.log('setMobileFunctions');
 
                 this.clearDesktopFunctions();
                 // Обработка клина на category в Mobile
@@ -90,7 +90,7 @@ define(["app",
             },
 
             clearMobileFunctions: function() {
-                console.log('Clear Mobile');
+                //console.log('Clear Mobile');
                 this.$el.find('a.parent').off(); // Убираем обработку клина по category для Desktop
             },
         });
